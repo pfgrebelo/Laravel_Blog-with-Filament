@@ -28,11 +28,13 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                Card::make()->schema([TextInput::make('name')->reactive()
-                ->afterStateUpdated(function (Closure $set, $state) {
-                    $set('slug', Str::slug($state));
-                })->required(),
-            TextInput::make('slug')->required()])
+                Card::make()->schema([
+                    TextInput::make('name')->reactive()
+                        ->afterStateUpdated(function (Closure $set, $state) {
+                            $set('slug', Str::slug($state));
+                        })->required(),
+                    TextInput::make('slug')->required()
+                ])
             ]);
     }
 
