@@ -27,6 +27,7 @@ use App\Filament\Resources\PostResource\RelationManagers;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use App\Filament\Resources\PostResource\RelationManagers\TagsRelationManager;
+use App\Filament\Resources\PostResource\Widgets\StatsOverview;
 
 class PostResource extends Resource
 {
@@ -97,6 +98,13 @@ class PostResource extends Resource
             'create' => Pages\CreatePost::route('/create'),
             'edit' => Pages\EditPost::route('/{record}/edit'),
             'view' => Pages\ViewPost::route('/{record}'),
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            StatsOverview::class,
         ];
     }
 }
